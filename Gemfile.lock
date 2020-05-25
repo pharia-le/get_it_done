@@ -78,6 +78,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.9.0)
+    faker (2.11.0)
+      i18n (>= 1.6, < 2)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
@@ -233,6 +235,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   devise
+  faker
   jbuilder (~> 2.7)
   listen (~> 3.2)
   nokogiri
@@ -249,7 +252,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
-  tzinfo-data
   web-console (>= 3.3.0)
   webpacker (~> 4.0)
 
