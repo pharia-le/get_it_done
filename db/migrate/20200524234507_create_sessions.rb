@@ -7,6 +7,5 @@ class CreateSessions < ActiveRecord::Migration[6.0]
     end
     add_index :sessions, :session_id, unique: true
 	  add_index :sessions, :updated_at
-    end
   end
 end
