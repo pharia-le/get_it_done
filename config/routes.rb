@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   resources :projects
   devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: 'omniauth'}  
   root to: "application#home"
