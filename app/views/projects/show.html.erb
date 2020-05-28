@@ -1,0 +1,7 @@
+<h1><%= @project.name %></h1><br>
+<ul>
+    <li>Objective: <%= @project.objective %></li>
+    <li>Due by: <%= @project.due_date.strftime(" %b %e %Y") %></li><br>
+    <%= button_to "Edit Project", edit_project_path(@project), method: "get" %>
+    <%= button_to "Delete Project", @project, method: "delete" %>
+</ul>

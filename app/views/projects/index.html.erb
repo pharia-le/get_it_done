@@ -1,0 +1,9 @@
+<h1>All My Projects</h1><br>
+<ul>
+    <% @projects.each do |p| %>
+        <li>Name: <%= p.name %></li>
+        <li>Objective: <%= p.objective %></li>
+        <li>Due by: <%= p.due_date.strftime(" %b %e %Y") %></li>
+        <li><%= link_to "View", p %></li><br>
+    <% end %>
+</ul>

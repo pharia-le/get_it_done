@@ -1,0 +1,12 @@
+<%= form_with model: @project, local: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :objective %>
+    <%= f.text_area :objective %><br>
+    
+    <%= f.label :due_date %>
+    <%= f.date_field :due_date %><br>
+
+    <%= f.submit %>
+<% end %>
