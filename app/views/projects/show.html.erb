@@ -5,3 +5,12 @@
     <%= button_to "Edit Project", edit_project_path(@project), method: "get" %>
     <%= button_to "Delete Project", @project, method: "delete" %>
 </ul>
+<br>
+<h2>Tasks Below</h2><br>
+<% @project.tasks.each do |t| %>
+    <li>Task Name: <%= t.name %></li>
+    <li>Priority Rating: <%= t.priority %></li>
+    <li><%= link_to "View", t %></li><br>
+<% end %>
+
+<%= link_to "Create New Task", new_project_task_path(@project), method: "get" %>
