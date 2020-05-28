@@ -1,0 +1,13 @@
+<%= form_with model: @project.tasks.build, local: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :priority %>
+    <%= f.number_field :priority %><br>
+    
+    <%= f.label :turnaround_time %>
+    <%= f.time_select :turnaround_time %><br>
+
+    <%= f.hidden_field :project_id, value: @project.id %>
+    <%= f.submit %>
+<% end %>
