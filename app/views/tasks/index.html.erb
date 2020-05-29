@@ -1,0 +1,8 @@
+<% @projects.each do |p| %>
+    <h3>Project: <%= p.name %></h3>
+    <% p.tasks.each do |t| %>
+        <li>Task: <%= t.name %></li>
+        <li>Priority: <%= t.priority %></li>
+        <li>Minutes to Complete: <%= t.turnaround_time %></li>
+    <% end %><br>
+<% end %>

@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_203343) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.integer "priority"
-    t.time "turnaround_time"
+    t.integer "turnaround_time"
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

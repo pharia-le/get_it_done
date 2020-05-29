@@ -5,8 +5,8 @@
     <%= f.label :priority %>
     <%= f.number_field :priority %><br>
     
-    <%= f.label :turnaround_time %>
-    <%= f.time_select :turnaround_time %><br>
+    <%= f.label :turnaround_time, "Minutes to Complete" %>
+    <%= f.number_field :turnaround_time, min: 1, max: 60 %>
 
     <%= f.submit %>
 <% end %>
