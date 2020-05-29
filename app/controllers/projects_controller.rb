@@ -41,6 +41,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:name,:objective,:due_date)
+        params.require(:project).permit(:name,:objective,:due_date,:complete,:priority)
     end
 end

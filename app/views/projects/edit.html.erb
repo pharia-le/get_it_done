@@ -8,5 +8,11 @@
     <%= f.label :due_date %>
     <%= f.date_field :due_date %><br>
 
+    <%= f.label :priority  %>
+    <%= f.number_field :priority, min: 1, max: 5 %><br>
+
+    <%= f.label :complete %>
+    <%= f.check_box :complete %><br>
+
     <%= f.submit %>
 <% end %>

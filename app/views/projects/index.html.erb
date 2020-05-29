@@ -4,6 +4,8 @@
         <li>Name: <%= p.name %></li>
         <li>Objective: <%= p.objective %></li>
         <li>Due by: <%= p.due_date.strftime(" %b %e %Y") %></li>
+        <li>Priority: <%= p.priority %></li>
+        <li>Complete: <%= p.complete %></li>
         <li><%= link_to "View", p %></li><br>
     <% end %>
 </ul>

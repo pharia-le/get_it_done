@@ -3,8 +3,11 @@
     <%= f.text_field :name %><br>
 
     <%= f.label :objective %>
-    <%= f.text_area :objective %><br>
+    <%= f.text_area :objective, size: "50 x 5" %><br>
     
+    <%= f.label :priority  %>
+    <%= f.number_field :priority, min: 1, max: 5 %><br>
+
     <%= f.label :due_date %>
     <%= f.date_field :due_date %><br>
 
