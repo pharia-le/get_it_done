@@ -6,7 +6,10 @@
     <%= f.number_field :priority %><br>
     
     <%= f.label :turnaround_time, "Minutes to Complete" %>
-    <%= f.number_field :turnaround_time, min: 1, max: 60 %>
+    <%= f.number_field :turnaround_time, min: 1, max: 60 %><br>
+
+    <%= f.label :done %>
+    <%= f.check_box :done %><br>
 
     <%= f.submit %>
 <% end %>

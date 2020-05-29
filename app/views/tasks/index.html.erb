@@ -1,5 +1,6 @@
 <% @tasks.each do |t| %>
     <li>Task: <%= t.name %></li>
     <li>Priority: <%= t.priority %></li>
-    <li>Minutes to Complete: <%= t.turnaround_time %></li><br>
+    <li>Minutes to Complete: <%= t.turnaround_time %></li>
+    <li>Done? <%= t.done %></li><br>
 <% end %>

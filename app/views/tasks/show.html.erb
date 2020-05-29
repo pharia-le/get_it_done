@@ -1,4 +1,5 @@
 <li>Task: <%= @task.name %></li><br>
 <li>Priority: <%= @task.priority %></li><br>
 <li>Minutes to Complete: <%= @task.turnaround_time %></li><br>
+<li>Done? <%= @task.done %></li><br>
 <%= link_to "Edit Task", edit_task_path(@task) %>
