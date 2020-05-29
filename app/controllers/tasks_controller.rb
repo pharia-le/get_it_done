@@ -1,7 +1,16 @@
 class TasksController < ApplicationController
 
     def index
-        @projects = current_user.projects
+        if params[:project_id]
+            project = Project.find_by_id(params[:project_id])
+            if project.nil?
+                redirect_to tasks_path, alert: "Project not found"
+            else
+                @tasks = project.tasks
+            end
+        else
+            @tasks = current_user.tasks
+        end
     end
 
     def new
