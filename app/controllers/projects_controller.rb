@@ -10,6 +10,8 @@ class ProjectsController < ApplicationController
     
     def new
         @project = current_user.projects.build
+        @project.tasks.build(name: "Example Task 1")
+        @project.tasks.build(name: "Example Task 2")
     end
 
     def create
@@ -41,6 +43,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:name,:objective,:due_date,:complete,:priority)
+        params.require(:project).permit(:name,:objective,:due_date,:complete,:priority,tasks_attributes: [:name, :priority, :turnaround_time, :done])
     end
 end
