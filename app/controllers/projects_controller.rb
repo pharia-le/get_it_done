@@ -15,9 +15,13 @@ class ProjectsController < ApplicationController
     end
 
     def create
+        user_project = current_user.user_projects.build
         project = Project.new(project_params)
         if project.save
-            current_user.user_projects.build(project: project).save
+            user_project.project = project
+            user_project.fun = params[:project][:user_project][:fun]
+            user_project.category = params[:project][:user_project][:category]
+            user_project.save
             redirect_to project
         else
             render :new
@@ -43,6 +47,21 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:name,:objective,:due_date,:complete,:priority,tasks_attributes: [:name, :priority, :turnaround_time, :done])
+        params.require(:project).permit(
+            :name,
+            :objective,
+            :due_date,
+            :complete,
+            :priority,
+            :tasks_attributes => [
+                :name,
+                :priority,
+                :turnaround_time,
+                :done
+                ],
+            :user_projects_attributes => [
+                :category
+                ]
+             )
     end
 end

@@ -3,7 +3,8 @@
     <li>Objective: <%= @project.objective %></li>
     <li>Due by: <%= @project.due_date.strftime(" %b %e %Y") %></li>
     <li>Priority #: <%= @project.priority %></li>
-    <li>Complete? <%= @project.complete %></li><br>
+    <li>Complete <%= @project.complete %></li><br>
+    <li>Category: <%= @project.user_projects.first.category %></li><br>
     <%= button_to "Edit Project", edit_project_path(@project), method: "get" %>
     <%= button_to "Delete Project", @project, method: "delete" %>
 </ul>
@@ -17,4 +18,4 @@
     <li><%= link_to "View", t %></li><br>
 <% end %>
 
-<%= link_to "Create New Task", new_project_task_path(@project), method: "get" %>
+<%= button_to "Create New Task", new_project_task_path(@project), method: "get" %>

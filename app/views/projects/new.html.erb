@@ -6,20 +6,45 @@
     <%= f.label :objective %>
     <%= f.text_area :objective, size: "50 x 5" %><br>
     
-    <%= f.label :priority  %>
-    <%= f.number_field :priority, min: 1, max: 5 %><br>
+    Priority Scale:<br>
+    <%= f.label :priority, "Low" %>
+    <%= f.radio_button :priority, "Low" %>
+
+    <%= f.label :priority, "Medium" %>
+    <%= f.radio_button :priority, "Medium" %>
+
+    <%= f.label :priority, "High" %>
+    <%= f.radio_button :priority, "High" %><br>
 
     <%= f.label :due_date %>
     <%= f.date_field :due_date %><br>
-    
+
+    <%= f.fields_for @project.user_projects.build do |x| %>
+        <%= x.label :fun %>
+        <%= x.check_box :fun %><br>
+
+        <%= x.label :category, "Personal" %>
+        <%= x.radio_button :category, "Personal" %>
+
+        <%= x.label :category, "Business" %>
+        <%= x.radio_button :category, "Business" %>
+    <% end %>
+
     <br>
     <h3>Tasks for New Project</h3>
     <%= f.fields_for :tasks do |t| %>
         <%= t.label :name %>
         <%= t.text_field :name %><br>
 
-        <%= t.label :priority %>
-        <%= t.number_field :priority %><br>
+        Priority Scale:<br>
+        <%= t.label :priority, "Low" %>
+        <%= t.radio_button :priority, "Low" %>
+
+        <%= t.label :priority, "Medium" %>
+        <%= t.radio_button :priority, "Medium" %>
+
+        <%= t.label :priority, "High" %>
+        <%= t.radio_button :priority, "High" %><br>
         
         <%= t.label :turnaround_time, "Minutes to Complete" %>
         <%= t.number_field :turnaround_time, min: 1, max: 60 %><br>
