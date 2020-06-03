@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
     
     def index
-        @projects = current_user.projects
+        @personal_up = current_user.user_projects.personal
+        @business_up = current_user.user_projects.business
     end
 
     def show
@@ -16,14 +17,15 @@ class ProjectsController < ApplicationController
 
     def create
         user_project = current_user.user_projects.build
-        project = Project.new(project_params)
-        if project.save
-            user_project.project = project
-            user_project.fun = params[:project][:user_project][:fun]
+        @project = Project.new(project_params)
+        if @project.save
+            binding.pry
+            user_project.project = @project
             user_project.category = params[:project][:user_project][:category]
             user_project.save
-            redirect_to project
+            redirect_to @project
         else
+            binding.pry
             render :new
         end
     end

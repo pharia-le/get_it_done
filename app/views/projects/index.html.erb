@@ -1,11 +1,24 @@
 <h1>All My Projects</h1><br>
+<%= button_to "Create Project", new_project_path, method: "get" %><br>
+<h2>Personal Projects</h2>
 <ul>
-    <% @projects.each do |p| %>
-        <li>Name: <%= p.name %></li>
-        <li>Objective: <%= p.objective %></li>
-        <li>Due by: <%= p.due_date.strftime(" %b %e %Y") %></li>
-        <li>Priority: <%= p.priority %></li>
-        <li>Complete: <%= p.complete %></li>
-        <li><%= link_to "View", p %></li><br>
+    <% @personal_up.each do |p| %>
+        <li>Name: <%= p.project.name %></li>
+        <li>Objective: <%= p.project.objective %></li>
+        <li>Due by: <%= p.project.due_date.strftime(" %b %e %Y") %></li>
+        <li>Priority: <%= p.project.priority %></li>
+        <li>Complete: <%= p.project.complete %></li>
+        <li><%= link_to "View", p.project %></li><br>
+    <% end %>
+</ul>
+<h2>Business Projects</h2>
+<ul>
+    <% @business_up.each do |b| %>
+        <li>Name: <%= b.project.name %></li>
+        <li>Objective: <%= b.project.objective %></li>
+        <li>Due by: <%= b.project.due_date.strftime(" %b %e %Y") %></li>
+        <li>Priority: <%= b.project.priority %></li>
+        <li>Complete: <%= b.project.complete %></li>
+        <li><%= link_to "View", b.project %></li><br>
     <% end %>
 </ul>

@@ -1,4 +1,40 @@
-<h1>Welcome to your homepage!</h1>
-<%= button_to "Create Project", new_project_path, method: "get" %><br>
-<%= button_to "View My Projects", projects_path, method: "get" %><br>
-<%= button_to "View My Tasks", tasks_path, method: "get" %><br>
+<h1>Welcome to Projekt!</h1>
+<p>"Let our advance worrying become advance thinking and planning." - Winston Churchill.</p>
+<% if current_user %>
+    <%= button_to "Create Project", new_project_path, method: "get" %><br>
+    <%= button_to "View My Projects", projects_path, method: "get" %><br>
+    <%= button_to "View My Tasks", tasks_path, method: "get" %><br>
+<% end %>
+
+<% if current_user && @due_soon_projects.any? %>
+<h3>Projects Due In a Week</h3>
+    <ul>
+        <% @due_soon_projects.each do |p| %>
+            <li>Name.: <%= p.name %></li>
+            <li>Due: <%= p.due_date.strftime(" %b %e, %Y") %></li>
+            <li><%= link_to "View", p %></li><br>
+        <% end %>
+    </ul>
+<% end %>
+
+<% if current_user && @high_priority_tasks.any? %>
+    <h3>High Priority Tasks</h3>
+    <ul>
+        <% @high_priority_tasks.each do |t| %>
+            <li>Desc.: <%= t.name %></li>
+            <li>Min.: <%= t.turnaround_time %></li>
+            <li><%= link_to "View", t %></li><br>
+        <% end %>
+    </ul>
+<% end %>
+
+<% if current_user && @high_priority_tasks.any? %>
+    <h3>Quick Tasks</h3>
+    <ul>
+        <% @tasks_under_fifteen.each do |t| %>
+            <li>Desc.: <%= t.name %></li>
+            <li>Min.: <%= t.turnaround_time %></li>
+            <li><%= link_to "View", t %></li><br>
+        <% end %>
+    </ul>
+<% end %>

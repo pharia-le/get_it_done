@@ -1,5 +1,7 @@
-<li>Task: <%= @task.name %></li><br>
+<h3><%= link_to @task.project.name, @task.project %></h3>
+<li>Desc: <%= @task.name %></li><br>
 <li>Priority: <%= @task.priority %></li><br>
-<li>Minutes to Complete: <%= @task.turnaround_time %></li><br>
-<li>Done? <%= @task.done %></li><br>
-<%= link_to "Edit Task", edit_task_path(@task) %>
+<li>Mins.: <%= @task.turnaround_time %></li><br>
+<li>Done: <%= @task.done %></li><br>
+<%= button_to "Edit Task", edit_task_path(@task), method: "get" %><br>
+<%= button_to "Delete Task", @task, method: "delete" %>

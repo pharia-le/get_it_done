@@ -2,26 +2,29 @@ class TasksController < ApplicationController
 
     def index
         if params[:project_id]
-            project = Project.find_by_id(params[:project_id])
-            if project.nil?
+            @project = Project.find_by_id(params[:project_id])
+            if @project.nil?
                 redirect_to tasks_path, alert: "Project not found"
             else
-                @tasks = project.tasks
+                @tasks_not_done = @project.tasks.not_done
+                @tasks_done = @project.tasks.is_done
             end
         else
-            @tasks = current_user.tasks
+            @tasks_not_done = current_user.tasks.not_done
+            @tasks_done = current_user.tasks.is_done
         end
     end
 
     def new
         @project = Project.find_by_id(params[:project_id])
+        @task = @project.tasks.build
     end
 
     def create
-        project = Project.find_by_id(params[:task][:project_id])
-        task = project.tasks.build(task_params)
-        if task.save
-            redirect_to project
+        @project = Project.find_by_id(params[:task][:project_id])
+        @task = @project.tasks.build(task_params)
+        if @task.save
+            redirect_to @project
         else
            render :new 
         end
@@ -45,8 +48,10 @@ class TasksController < ApplicationController
     end
 
     def destroy
-        Task.find_by_id(params[:id]).destroy
-        redirect_to tasks_path
+        task = Task.find_by_id(params[:id])
+        project = task.project
+        task.destroy
+        redirect_to project
     end
 
     def task_params

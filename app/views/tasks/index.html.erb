@@ -1,6 +1,21 @@
-<% @tasks.each do |t| %>
-    <li>Task: <%= t.name %></li>
-    <li>Priority: <%= t.priority %></li>
-    <li>Minutes to Complete: <%= t.turnaround_time %></li>
-    <li>Done? <%= t.done %></li><br>
-<% end %>
+<h2>Tasks in Progress</h2>
+<ul>
+    <% @tasks_not_done.each do |t| %>
+        <li>Desc.: <%= t.name %></li>
+        <li>Priority: <%= t.priority %></li>
+        <li>Mins.: <%= t.turnaround_time %></li>
+        <li><%= link_to "View", t %></li><br>
+        
+    <% end %>
+</ul>
+<%= %>
+<%= button_to "Create New Task", new_project_task_path(@project), method: "get" unless @project.nil? %>
+<h2>Completed Tasks</h2>
+<ul>
+    <% @tasks_done.each do |t| %>
+        <li>Desc.: <%= t.name %></li>
+        <li>Priority: <%= t.priority %></li>
+        <li>Mins.: <%= t.turnaround_time %></li>
+        <li><%= link_to "View", t %></li><br>
+    <% end %>
+</ul>
