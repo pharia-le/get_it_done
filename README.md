@@ -16,6 +16,15 @@ Install gems.
 bundle install
 ```
 
+Create Postgres Database.
+
+
+Migrate database.
+
+```
+bundle install
+```
+
 Start rails server.
 
 ```
