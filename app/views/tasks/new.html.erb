@@ -6,7 +6,7 @@
 
 <%= form_with model: @project.tasks.build, local: true do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name, size: "100" %><br>
 
     Priority Scale<br>
     <%= f.label :priority, "Low" %>
@@ -20,6 +20,9 @@
     
     <%= f.label :turnaround_time, "Minutes to Complete" %>
     <%= f.number_field :turnaround_time, min: 1, max: 240 %>
+
+    <%= f.label :reminder %>
+    <%= f.date_field :reminder %><br>
 
     <%= f.hidden_field :project_id, value: @project.id %>
     <%= f.submit %>

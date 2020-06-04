@@ -6,24 +6,14 @@
 
 <h3> Create New Project</h3>
 <%= form_with model: @project, local: true do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
 
     <%= f.label :objective %>
-    <%= f.text_area :objective, size: "50 x 5" %><br>
-    
-    Priority Scale:<br>
-    <%= f.label :priority, "Low" %>
-    <%= f.radio_button :priority, "Low" %>
+    <%= f.text_area :objective, size: "60 x 5" %><br>
 
-    <%= f.label :priority, "Medium" %>
-    <%= f.radio_button :priority, "Medium" %>
-
-    <%= f.label :priority, "High" %>
-    <%= f.radio_button :priority, "High" %><br>
-
-    <%= f.label :due_date %>
-    <%= f.date_field :due_date %><br>
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline %><br>
 
     <%= f.fields_for @project.user_projects.build do |x| %>
     
@@ -38,7 +28,7 @@
     <h3>Tasks for New Project</h3>
     <%= f.fields_for :tasks do |t| %>
         <%= t.label :name, "Desc." %>
-        <%= t.text_field :name %><br>
+        <%= t.text_field :name, size: "100" %><br>
 
         Priority Scale:<br>
         <%= t.label :priority, "Low" %>
@@ -52,6 +42,9 @@
         
         <%= t.label :turnaround_time, "Minutes to Complete" %>
         <%= t.number_field :turnaround_time, min: 1, max: 240 %><br>
+        
+        <%= t.label :reminder %>
+        <%= t.date_field :reminder %><br>
     <% end %>
 
     <%= f.submit %>

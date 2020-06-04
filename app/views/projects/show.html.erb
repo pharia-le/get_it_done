@@ -1,8 +1,7 @@
-<h1><%= @project.name %></h1><br>
+<h1><%= @project.title %></h1><br>
 <ul>
     <li>Objective: <%= @project.objective %></li>
-    <li>Due by: <%= @project.due_date.strftime(" %b %e, %Y") %></li>
-    <li>Priority #: <%= @project.priority %></li>
+    <li>Due by: <%= @project.deadline.strftime(" %b %e, %Y") %></li>
     <li>Complete <%= @project.complete %></li><br>
     <li>Category: <%= @project.user_projects.first.category %></li><br>
     <%= button_to "Edit Project", edit_project_path(@project), method: "get" %>
@@ -14,6 +13,7 @@
     <li>Desc.: <%= t.name %></li>
     <li>Priority: <%= t.priority %></li>
     <li>Mins.: <%= t.turnaround_time %></li>
+    <li>Reminder: <%= t.reminder.strftime(" %b %e, %Y") %></li>
     <li><%= link_to "View", t %></li><br>
 <% end %>
 <%= button_to "View All Tasks for Project", project_tasks_path(@project), method: "get" %><br>

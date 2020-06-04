@@ -6,7 +6,7 @@
 
 <%= form_with model: @task, local: true do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name, size: "100" %><br>
 
     Priority Scale<br>
     <%= f.label :priority, "Low" %>
@@ -21,6 +21,9 @@
     <%= f.label :turnaround_time, "Minutes to Complete" %>
     <%= f.number_field :turnaround_time, min: 1, max: 240 %><br>
 
+    <%= f.label :reminder %>
+    <%= f.date_field :reminder %><br>
+        
     <%= f.label :done %>
     <%= f.check_box :done %><br>
 

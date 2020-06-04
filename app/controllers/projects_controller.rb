@@ -11,21 +11,19 @@ class ProjectsController < ApplicationController
     
     def new
         @project = current_user.projects.build
-        @project.tasks.build(name: "Example Task 1")
-        @project.tasks.build(name: "Example Task 2")
+        @project.tasks.build
+        @project.tasks.build
     end
 
     def create
         user_project = current_user.user_projects.build
         @project = Project.new(project_params)
         if @project.save
-            binding.pry
             user_project.project = @project
             user_project.category = params[:project][:user_project][:category]
             user_project.save
             redirect_to @project
         else
-            binding.pry
             render :new
         end
     end
@@ -35,9 +33,9 @@ class ProjectsController < ApplicationController
     end
 
     def update
-        project = Project.find_by_id(params[:id])
-        if project.update(project_params)
-            redirect_to project
+        @project = Project.find_by_id(params[:id])
+        if @project.update(project_params)
+            redirect_to @project
         else
             render :edit
         end
@@ -50,16 +48,18 @@ class ProjectsController < ApplicationController
 
     def project_params
         params.require(:project).permit(
-            :name,
+            :title,
             :objective,
-            :due_date,
+            :deadline,
             :complete,
             :priority,
             :tasks_attributes => [
                 :name,
                 :priority,
                 :turnaround_time,
-                :done
+                :done,
+                :reminder,
+                :_destroy
                 ],
             :user_projects_attributes => [
                 :category

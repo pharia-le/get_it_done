@@ -3,10 +3,9 @@
 <h2>Personal Projects</h2>
 <ul>
     <% @personal_up.each do |p| %>
-        <li>Name: <%= p.project.name %></li>
+        <li>Name: <%= p.project.title %></li>
         <li>Objective: <%= p.project.objective %></li>
-        <li>Due by: <%= p.project.due_date.strftime(" %b %e %Y") %></li>
-        <li>Priority: <%= p.project.priority %></li>
+        <li>Due by: <%= p.project.deadline.strftime(" %b %e %Y") %></li>
         <li>Complete: <%= p.project.complete %></li>
         <li><%= link_to "View", p.project %></li><br>
     <% end %>
@@ -14,10 +13,9 @@
 <h2>Business Projects</h2>
 <ul>
     <% @business_up.each do |b| %>
-        <li>Name: <%= b.project.name %></li>
+        <li>Name: <%= b.project.title %></li>
         <li>Objective: <%= b.project.objective %></li>
-        <li>Due by: <%= b.project.due_date.strftime(" %b %e %Y") %></li>
-        <li>Priority: <%= b.project.priority %></li>
+        <li>Due by: <%= b.project.deadline.strftime(" %b %e %Y") %></li>
         <li>Complete: <%= b.project.complete %></li>
         <li><%= link_to "View", b.project %></li><br>
     <% end %>

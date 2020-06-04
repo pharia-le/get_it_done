@@ -5,24 +5,14 @@
 <% end %>
 
 <%= form_with model: @project, local: true do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
 
     <%= f.label :objective %>
-    <%= f.text_area :objective %><br>
+    <%= f.text_area :objective, size: "60 x 5" %><br>
     
-    <%= f.label :due_date %>
-    <%= f.date_field :due_date %><br>
-
-    Priority Scale<br>
-    <%= f.label :priority, "Low" %>
-    <%= f.radio_button :priority, "Low" %>
-
-    <%= f.label :priority, "Medium" %>
-    <%= f.radio_button :priority, "Medium" %>
-
-    <%= f.label :priority, "High" %>
-    <%= f.radio_button :priority, "High" %><br>
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline %><br>
 
     <%= f.label :complete %>
     <%= f.check_box :complete %><br>
