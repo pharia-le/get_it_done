@@ -13,7 +13,6 @@
     <li>Desc.: <%= t.name %></li>
     <li>Priority: <%= t.priority %></li>
     <li>Reminder: <%= format_date(t.reminder) %></li>
-    <li>Minutes: <%= t.turnaround_time %></li>
     <li><%= link_to "View", project_task_path(@project,t) %></li><br>
 <% end %>
 <%= button_to "All Project Tasks", project_tasks_path(@project), method: "get" %><br>

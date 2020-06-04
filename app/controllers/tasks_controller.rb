@@ -61,7 +61,6 @@ class TasksController < ApplicationController
         params.require(:task).permit(
             :name,
             :priority,
-            :turnaround_time,
             :done,
             :reminder,
             circumstance_ids:[]

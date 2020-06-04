@@ -2,7 +2,6 @@
 <li>Desc: <%= @task.name %></li>
 <li>Priority: <%= @task.priority %></li>
 <li>Reminder: <%= format_date(@task.reminder) %></li>
-<li>Mins.: <%= @task.turnaround_time %></li>
 <li>Done: <%= @task.done %></li>
 <br>
 <%= button_to "Edit Task", edit_task_path(@task), method: "get" %><br>

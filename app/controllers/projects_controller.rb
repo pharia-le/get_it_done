@@ -56,7 +56,6 @@ class ProjectsController < ApplicationController
             :tasks_attributes => [
                 :name,
                 :priority,
-                :turnaround_time,
                 :done,
                 :reminder,
                 :id,
