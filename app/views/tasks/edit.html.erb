@@ -1,31 +1,3 @@
-<% if @task.errors.any? %>
-    <% @task.errors.full_messages.each do |e| %>
-        <%= e %><br>
-    <% end %>
-<% end %>
-
-<%= form_with model: @task, local: true do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, size: "100" %><br>
-
-    Priority Scale<br>
-    <%= f.label :priority, "Low" %>
-    <%= f.radio_button :priority, "Low" %>
-
-    <%= f.label :priority, "Medium" %>
-    <%= f.radio_button :priority, "Medium" %>
-
-    <%= f.label :priority, "High" %>
-    <%= f.radio_button :priority, "High" %><br>
-    
-    <%= f.label :turnaround_time, "Minutes to Complete" %>
-    <%= f.number_field :turnaround_time, min: 1, max: 240 %><br>
-
-    <%= f.label :reminder %>
-    <%= f.date_field :reminder %><br>
-        
-    <%= f.label :done %>
-    <%= f.check_box :done %><br>
-
-    <%= f.submit %>
-<% end %>
+<%= render partial: "layouts/errors", locals: {input: @task} %>
+<h3>Edit Task</h3>
+<%= render 'form' %>

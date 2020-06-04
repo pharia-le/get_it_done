@@ -1,0 +1,50 @@
+<%= form_with model: @project, local: true do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :objective %>
+    <%= f.text_area :objective, size: "60 x 5" %><br>
+
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline %><br>
+
+    
+    <%= f.fields_for :user_projects do |x| %>
+        <%= x.hidden_field :user_id, value: current_user.id %>
+
+        <%= x.label :aof, "Area of Focus" %>
+        <%= x.check_box :aof %><br>
+    <% end %>
+
+    <% if !@project.persisted? %>
+        <h3>Tasks</h3>
+        <%= f.fields_for :tasks do |t| %>
+            <%= t.label :name, "Desc." %>
+            <%= t.text_field :name, size: "100" %><br>
+
+            Priority Scale:<br>
+            <%= t.label :priority, "Low" %>
+            <%= t.radio_button :priority, "Low" %>
+
+            <%= t.label :priority, "Medium" %>
+            <%= t.radio_button :priority, "Medium" %>
+
+            <%= t.label :priority, "High" %>
+            <%= t.radio_button :priority, "High" %><br>
+            
+            <%= t.label :turnaround_time, "Minutes to Complete" %>
+            <%= t.number_field :turnaround_time, min: 1, max: 240 %><br>
+            
+            <%= t.label :reminder %>
+            <%= t.date_field :reminder %><br>
+
+            <%= t.label :circumstance_ids, "Contexts" %><br>
+            <%= t.collection_check_boxes :circumstance_ids, Circumstance.all, :id, :name %>
+        <% end %>
+    <% else %>
+        <%= f.label :complete %>
+        <%= f.check_box :complete %><br>
+    <% end %>
+
+    <%= f.submit %>
+<% end %>

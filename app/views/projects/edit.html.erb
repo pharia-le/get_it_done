@@ -1,21 +1,3 @@
-<% if @project.errors.any? %>
-    <% @project.errors.full_messages.each do |e| %>
-        <%= e %><br>
-    <% end %>
-<% end %>
-
-<%= form_with model: @project, local: true do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br>
-
-    <%= f.label :objective %>
-    <%= f.text_area :objective, size: "60 x 5" %><br>
-    
-    <%= f.label :deadline %>
-    <%= f.date_field :deadline %><br>
-
-    <%= f.label :complete %>
-    <%= f.check_box :complete %><br>
-
-    <%= f.submit %>
-<% end %>
+<%= render partial: "layouts/errors", locals: {input: @project} %>
+<h3>Edit Project</h3>
+<%= render 'form' %>

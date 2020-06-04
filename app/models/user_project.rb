@@ -1,6 +1,5 @@
 class UserProject < ApplicationRecord
   belongs_to :user
   belongs_to :project
-  scope :business, -> { where(category: "Business") }
-  scope :personal, -> { where(category: "Personal") }
+  scope :focus, -> { where(aof: true) }
 end

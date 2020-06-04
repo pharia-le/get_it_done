@@ -3,5 +3,6 @@
 <li>Priority: <%= @task.priority %></li><br>
 <li>Mins.: <%= @task.turnaround_time %></li><br>
 <li>Done: <%= @task.done %></li><br>
+
 <%= button_to "Edit Task", edit_task_path(@task), method: "get" %><br>
 <%= button_to "Delete Task", @task, method: "delete" %>

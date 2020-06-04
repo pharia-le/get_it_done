@@ -1,0 +1,5 @@
+<% if input.errors.any? %>
+    <% input.errors.full_messages.each do |msg| %>
+        <li><%= msg %><br></li>
+    <% end %>
+<% end %>

@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_081827) do
+ActiveRecord::Schema.define(version: 2020_06_04_094000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "contexts", force: :cascade do |t|
+  create_table "circumstances", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 2020_06_04_081827) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "task_circumstances", force: :cascade do |t|
+    t.bigint "task_id", null: false
+    t.bigint "circumstance_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["circumstance_id"], name: "index_task_circumstances_on_circumstance_id"
+    t.index ["task_id"], name: "index_task_circumstances_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -78,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_06_04_081827) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "task_circumstances", "circumstances"
+  add_foreign_key "task_circumstances", "tasks"
   add_foreign_key "tasks", "projects"
   add_foreign_key "user_projects", "projects"
   add_foreign_key "user_projects", "users"

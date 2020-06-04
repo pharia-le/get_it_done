@@ -28,3 +28,16 @@
 #     name: Faker::Company.name
 #     )
 # }
+
+Circumstance.create(name: "Home")
+Circumstance.create(name: "Office")
+Circumstance.create(name: "Phone")
+Circumstance.create(name: "Email")
+Circumstance.create(name: "LOW ENERGY")
+Circumstance.create(name: "MID ENERGY")
+Circumstance.create(name: "HIGH ENERGY")
+Circumstance.create(name: "Urgent")
+Circumstance.create(name: "5 Min")
+Circumstance.create(name: "15 Min")
+Circumstance.create(name: "30 Min")
+Circumstance.create(name: "60 Min")
