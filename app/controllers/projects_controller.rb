@@ -10,22 +10,30 @@ class ProjectsController < ApplicationController
     end
     
     def new
-        @project = current_user.projects.build
+        @project = Project.new
         @project.tasks.build
         @project.tasks.build
+        @project.user_projects.build
     end
 
     def create
-        user_project = current_user.user_projects.build
-        @project = Project.new(project_params)
+        @project = current_user.projects.build(project_params)
         if @project.save
-            user_project.project = @project
-            user_project.category = params[:project][:user_project][:category]
-            user_project.save
             redirect_to @project
         else
             render :new
         end
+        # binding.pry
+        # user_project = current_user.user_projects.build
+        # @project = Project.new(project_params)
+        # if @project.save
+        #     user_project.project = @project
+        #     user_project.category = params[:project][:user_project][:category]
+        #     user_project.save
+        #     redirect_to @project
+        # else
+        #     render :new
+        # end
     end
 
     def edit
@@ -62,7 +70,9 @@ class ProjectsController < ApplicationController
                 :_destroy
                 ],
             :user_projects_attributes => [
-                :category
+                :category,
+                :user_id,
+                :project_id
                 ]
              )
     end

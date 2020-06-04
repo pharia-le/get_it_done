@@ -15,8 +15,9 @@
     <%= f.label :deadline %>
     <%= f.date_field :deadline %><br>
 
-    <%= f.fields_for @project.user_projects.build do |x| %>
-    
+    <%= f.fields_for :user_projects do |x| %>
+        <%= x.hidden_field :user_id, value: current_user.id %>
+
         <%= x.label :category, "Personal" %>
         <%= x.radio_button :category, "Personal" %>
 
@@ -26,6 +27,7 @@
 
     <br>
     <h3>Tasks for New Project</h3>
+
     <%= f.fields_for :tasks do |t| %>
         <%= t.label :name, "Desc." %>
         <%= t.text_field :name, size: "100" %><br>
