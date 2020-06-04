@@ -8,7 +8,7 @@
     <h3>Today's Tasks</h3>
     <% if @today.any? %>
         <% @today.each do |t| %>
-            <li><%= link_to t.name, t %></li>
+            <li><%= link_to t.name, project_task_path(t.project,t) %></li>
         <% end %>
     <% else%>
         <p>None Today! :)</p>
