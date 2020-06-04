@@ -3,7 +3,6 @@ class Project < ApplicationRecord
     has_many :users, through: :user_projects
     has_many :tasks, dependent: :destroy
     accepts_nested_attributes_for :tasks, reject_if: lambda {|attributes| attributes['name'].blank?}
-    accepts_nested_attributes_for :user_projects
     validates :title, :deadline, :objective, presence: true
     validate :deadline_cannot_be_in_the_past
     scope :complete, -> { where(complete: true) }

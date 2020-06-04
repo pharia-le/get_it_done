@@ -1,8 +1,9 @@
 <h3><%= link_to @task.project.title, @task.project %></h3>
-<li>Desc: <%= @task.name %></li><br>
-<li>Priority: <%= @task.priority %></li><br>
-<li>Mins.: <%= @task.turnaround_time %></li><br>
-<li>Done: <%= @task.done %></li><br>
-
+<li>Desc: <%= @task.name %></li>
+<li>Priority: <%= @task.priority %></li>
+<li>Reminder: <%= format_date(@task.reminder) %></li>
+<li>Mins.: <%= @task.turnaround_time %></li>
+<li>Done: <%= @task.done %></li>
+<br>
 <%= button_to "Edit Task", edit_task_path(@task), method: "get" %><br>
 <%= button_to "Delete Task", @task, method: "delete" %>

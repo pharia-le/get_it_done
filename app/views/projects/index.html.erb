@@ -4,7 +4,7 @@
     <% @incomplete_projects.each do |p| %>
         <li>Name: <%= p.title %></li>
         <li>Objective: <%= p.objective %></li>
-        <li>Deadline: <%= p.deadline.strftime(" %b %e, %Y") %></li>
+        <li>Deadline: <%= format_date(p.deadline) %></li>
         <li><%= link_to "View", p %></li><br>
     <% end %>
 </ul>
