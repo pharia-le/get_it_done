@@ -7,12 +7,16 @@ class TasksController < ApplicationController
             if @project.nil?
                 redirect_to tasks_path, alert: "Project not found"
             else
-                @incomplete = @project.tasks.not_done
-                @completed = @project.tasks.is_done
+                @low = @project.tasks.not_done.low
+                @med = @project.tasks.not_done.med
+                @high = @project.tasks.not_done.high
+                @done = @project.tasks.is_done
             end
         else
-            @incomplete = current_user.tasks.not_done
-            @completed = current_user.tasks.is_done
+            @low = current_user.tasks.not_done.low
+            @med = current_user.tasks.not_done.med
+            @high = current_user.tasks.not_done.high
+            @done = current_user.tasks.is_done
         end
     end
 

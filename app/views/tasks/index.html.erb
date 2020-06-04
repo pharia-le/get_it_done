@@ -1,16 +1,46 @@
-<h2>My Tasks</h2>
-<h3>In Progress</h3>
+<h2>My Tasks by Priority</h2>
+<h3>High</h3>
 <ul>
-    <% @incomplete.each do |t| %>
-        <li>Desc.: <%= t.name %></li>
-        <li>Priority: <%= t.priority %></li>
-        <li>Reminder: <%= format_date(t.reminder) %></li>
-        <li><%= link_to "View", project_task_path(t.project,t) %></li><br>
+    <% if @high.any? %>
+        <% @high.each do |t| %>
+            <li>Desc.: <%= t.name %></li>
+            <li>Priority: <%= t.priority %></li>
+            <li>Reminder: <%= format_date(t.reminder) %></li>
+            <li><%= link_to "View", project_task_path(t.project,t) %></li><br>
+        <% end %>
+    <% else %>
+        <p>No High Priority Tasks</p>
+    <% end %>
+</ul>
+<h3>Medium</h3>
+<ul>
+    <% if @med.any? %>
+        <% @high.each do |t| %>
+            <li>Desc.: <%= t.name %></li>
+            <li>Priority: <%= t.priority %></li>
+            <li>Reminder: <%= format_date(t.reminder) %></li>
+            <li><%= link_to "View", project_task_path(t.project,t) %></li><br>
+        <% end %>
+    <% else %>
+        <p>No Medium Priority Tasks</p>
+    <% end %>
+</ul>
+<h3>Low</h3>
+<ul>
+    <% if @low.any? %>
+        <% @high.each do |t| %>
+            <li>Desc.: <%= t.name %></li>
+            <li>Priority: <%= t.priority %></li>
+            <li>Reminder: <%= format_date(t.reminder) %></li>
+            <li><%= link_to "View", project_task_path(t.project,t) %></li><br>
+        <% end %>
+    <% else %>
+        <p>No Low Priority Tasks</p>
     <% end %>
 </ul>
 <h3>Completed</h3>
 <ul>
-    <% @completed.each do |t| %>
-        <li><%= link_to t.name, project_task_path(t.project,t) %></li><br>
+    <% @done.each do |t| %>
+        <li><%= link_to t.name, project_task_path(t.project,t) %></li>
     <% end %>
 </ul>

@@ -1,11 +1,10 @@
 <h1>Welcome to Projekt!</h1>
 <p>"Let our advance worrying become advance thinking and planning." - Winston Churchill.</p>
 <% if current_user %>
-    <%= button_to "Create Project", new_project_path, method: "get" %><br>
-    <%= button_to "View My Projects", projects_path, method: "get" %><br>
-    <%= button_to "View My Tasks", tasks_path, method: "get" %><br>
-    
-    <h3>Today's Tasks</h3>
+    -----------------------------------------------------------------
+    <h4>----------------------------Tasks----------------------------</h4>
+    -----------------------------------------------------------------
+    <h4>Today</h4>
     <% if @today.any? %>
         <% @today.each do |t| %>
             <li><%= link_to t.name, project_task_path(t.project,t) %></li>
@@ -14,16 +13,14 @@
         <p>None Today! :)</p>
     <% end %>
 
-    <h3>Approaching Deadlines</h3>
-    <% if @warning.any? %>
-        <% @warning.each do |p| %>
-            <li><%= link_to p.title, p %></li>
-        <% end %>
-    <% else %>
-        <p>No Project Deadlines Approaching</p>
-    <% end %>
+    <h4>View By</h4>
+    <li><%= link_to "Context", circumstances_path %></li>
+    <li><%= link_to "Priority", tasks_path %></li>
 
-    <h3>Focus Projects</h3>
+    -----------------------------------------------------------------
+    <h4>--------------------------Projects---------------------------</h4>
+    -----------------------------------------------------------------
+    <h3>Area of Focus</h3>
     <% if @focus.any? %>
         <% @focus.each do |user_proj| %>
             <li><%= link_to user_proj.project.title, user_proj.project %></li>
@@ -31,6 +28,16 @@
     <% else %>
         <p>Please mark a Project as an aof (Area of Focus) to be on your home view.</p>
     <% end %>
-
-    <h3><%= link_to "Context List", circumstances_path %></h3>
+    <h3>Deadline Approaching</h3>
+    <% if @warning.any? %>
+        <% @warning.each do |p| %>
+            <li><%= link_to p.title, p %></li>
+        <% end %>
+    <% else %>
+        <p>No Project Deadlines Approaching</p>
+    <% end %>
+    <h3>View All</h3>
+    <li><%= link_to "View My Projects", projects_path %></li>
+    <br>
+    <%= button_to "Create Project", new_project_path, method: "get" %>
 <% end %>
