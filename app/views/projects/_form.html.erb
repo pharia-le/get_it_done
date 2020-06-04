@@ -39,7 +39,7 @@
             <%= t.date_field :reminder %><br>
 
             <%= t.label :circumstance_ids, "Contexts" %><br>
-            <%= t.collection_check_boxes :circumstance_ids, Circumstance.all, :id, :name %>
+            <%= t.collection_check_boxes :circumstance_ids, Circumstance.all, :id, :name %><br>
         <% end %>
     <% else %>
         <%= f.label :complete %>
