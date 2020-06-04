@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :project
+  has_and_belongs_to_many :contexts
   validates :name, presence: true
   validates :turnaround_time, presence: true
   scope :high_priority, -> { where(priority: "High") }
