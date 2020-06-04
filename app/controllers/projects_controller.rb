@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
     end
 
     def update
+        binding.pry
         if @project.update(project_params)
             redirect_to @project
         else
@@ -58,12 +59,15 @@ class ProjectsController < ApplicationController
                 :turnaround_time,
                 :done,
                 :reminder,
+                :id,
+                :_destroy,
                 circumstance_ids: []
                 ],
             :user_projects_attributes => [
                 :aof,
                 :user_id,
-                :project_id
+                :project_id,
+                :id
                 ]
              )
     end

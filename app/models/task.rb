@@ -6,6 +6,6 @@ class Task < ApplicationRecord
   scope :high_priority, -> { where(priority: "High") }
   scope :not_done, -> { where(done: false) }
   scope :is_done, -> { where(done: true) }
-  scope :under_fifteen, -> { where("turnaround_time <= 15") }
+  # scope :under_fifteen, -> { where("turnaround_time <= 15") }
   scope :today, -> { where(reminder: Date.today) }
 end
