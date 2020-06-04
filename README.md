@@ -4,19 +4,25 @@ Projekt is a Ruby on Rails application where a user may manage their projects an
 
 ### Installing
 
-Clone repository to chose directory via the terminal.
+Clone repository to chosen directory.
 
 ```
 git clone git@github.com:pharia-le/projekt.git
 ```
 
-Install gems via the terminal.
+Install gems.
 
 ```
 bundle install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Start rails server.
+
+```
+rails s
+```
+
+Navigate to http://localhost:3000/ in browser.
 
 ## Contributing
 
