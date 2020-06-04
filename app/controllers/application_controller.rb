@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
         if current_user
             @focus = current_user.user_projects.focus
             @warning = current_user.projects.incomplete.due_soon
-        #     @tasks_today = current_user.tasks.not_done.today
+            @today = current_user.tasks.not_done.today
         end
     end
 end

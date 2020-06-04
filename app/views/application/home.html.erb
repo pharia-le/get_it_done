@@ -4,17 +4,32 @@
     <%= button_to "Create Project", new_project_path, method: "get" %><br>
     <%= button_to "View My Projects", projects_path, method: "get" %><br>
     <%= button_to "View My Tasks", tasks_path, method: "get" %><br>
+    
+    <h3>Today's Tasks</h3>
+    <% if @today.any? %>
+        <% @today.each do |t| %>
+            <li><%= link_to t.name, t %></li>
+        <% end %>
+    <% else%>
+        <p>None Today! :)</p>
+    <% end %>
+
+    <h3>Approaching Deadlines</h3>
     <% if @warning.any? %>
-        <h3>Deadline w/in the Week</h3>
         <% @warning.each do |p| %>
             <li><%= link_to p.title, p %></li>
         <% end %>
+    <% else %>
+        <p>No Project Deadlines Approaching</p>
     <% end %>
+
+    <h3>Focus Projects</h3>
     <% if @focus.any? %>
-        <h3>Focus Projects</h3>
         <% @focus.each do |user_proj| %>
             <li><%= link_to user_proj.project.title, user_proj.project %></li>
         <% end %>
+    <% else %>
+        <p>Please mark a Project as an aof (Area of Focus) to be on your home view.</p>
     <% end %>
 
     <h3><%= link_to "Context List", circumstances_path %></h3>
