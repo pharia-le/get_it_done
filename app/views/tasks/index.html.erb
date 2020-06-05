@@ -15,7 +15,7 @@
 <h3>Medium</h3>
 <ul>
     <% if @med.any? %>
-        <% @high.each do |t| %>
+        <% @med.each do |t| %>
             <li>Desc.: <%= t.name %></li>
             <li>Priority: <%= t.priority %></li>
             <li>Reminder: <%= format_date(t.reminder) %></li>
@@ -28,7 +28,7 @@
 <h3>Low</h3>
 <ul>
     <% if @low.any? %>
-        <% @high.each do |t| %>
+        <% @low.each do |t| %>
             <li>Desc.: <%= t.name %></li>
             <li>Priority: <%= t.priority %></li>
             <li>Reminder: <%= format_date(t.reminder) %></li>

@@ -1,7 +1,7 @@
 class CircumstancesController < ApplicationController
 
     def index
-        @circumstances = Circumstance.all
+        @circumstances = current_user.circumstances
     end
 
 end
