@@ -16,14 +16,8 @@ Install gems.
 bundle install
 ```
 
-Create Postgres Database.
+Create Postgres Database & Migrate database.
 
-
-Migrate database.
-
-```
-bundle install
-```
 
 Start rails server.
 
