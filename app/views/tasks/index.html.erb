@@ -40,7 +40,11 @@
 </ul>
 <h3>Completed</h3>
 <ul>
-    <% @done.each do |t| %>
-        <li><%= link_to t.name, project_task_path(t.project,t) %></li>
+    <% if @done.any? %>
+        <% @done.each do |t| %>
+            <li><%= link_to t.name, project_task_path(t.project,t) %></li>
+        <% end %>
+    <% else %>
+        <p>No Completed Tasks</p>
     <% end %>
 </ul>

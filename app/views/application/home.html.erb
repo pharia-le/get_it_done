@@ -2,7 +2,7 @@
 <p>"Let our advance worrying become advance thinking and planning." - Winston Churchill.</p>
 <% if current_user %>
     -----------------------------------------------------------------
-    <h4>----------------------------Tasks----------------------------</h4>
+    <h4>-------------------Tasks------------------</h4>
     -----------------------------------------------------------------
     <h4>Today</h4>
     <% if @today.any? %>
@@ -18,9 +18,9 @@
     <li><%= link_to "Priority", tasks_path %></li>
 
     -----------------------------------------------------------------
-    <h4>--------------------------Projects---------------------------</h4>
+    <h4>-----------------Projects------------------</h4>
     -----------------------------------------------------------------
-    <h3>Area of Focus</h3>
+    <h5>Area of Focus</h5>
     <% if @focus.any? %>
         <% @focus.each do |user_proj| %>
             <li><%= link_to user_proj.project.title, user_proj.project %></li>
@@ -28,7 +28,7 @@
     <% else %>
         <p>Please mark a Project as an aof (Area of Focus) to be on your home view.</p>
     <% end %>
-    <h3>Deadline Approaching</h3>
+    <h5>Deadline Approaching</h5>
     <% if @warning.any? %>
         <% @warning.each do |p| %>
             <li><%= link_to p.title, p %></li>
@@ -36,7 +36,7 @@
     <% else %>
         <p>No Project Deadlines Approaching</p>
     <% end %>
-    <h3>View All</h3>
+    <h5>View All</h5>
     <li><%= link_to "View My Projects", projects_path %></li>
     <br>
     <%= button_to "Create Project", new_project_path, method: "get" %>

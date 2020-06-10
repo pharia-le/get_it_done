@@ -11,7 +11,8 @@
     
     <%= f.fields_for :user_projects do |x| %>
         <%= x.hidden_field :user_id, value: current_user.id %>
-
+        *Check aof for project to appear your home view.*
+        <br>
         <%= x.label :aof, "Area of Focus" %>
         <%= x.check_box :aof %><br>
     <% end %>

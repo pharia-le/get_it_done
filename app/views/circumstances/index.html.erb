@@ -1,8 +1,8 @@
 <% @circumstances.each do |c| %>
     <h3><%= c.name %></h3>
     <% c.tasks.not_done.each do |t| %>
-        <% if t.project.users.first == current_user%>
-            <li><%= link_to t.name, t unless t.project.users.first != current_user %></li>
+        <% if t.project.users.first == current_user %>
+            <li><%= link_to t.name, t %></li>
         <% end %>
     <% end %>
 <% end %>
