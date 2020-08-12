@@ -1,12 +1,17 @@
 class OmniauthController < ApplicationController
 
+    def omni_error(user)
+        provider = user.provider
+        flash[:error] = "There was a problem signing you in through #{provider}. Please register or try signing in later."
+        redirect_to new_user_registration_url
+    end
+
     def facebook
         @user = User.create_from_provider_data(request.env['omniauth.auth'])
         if @user.persisted?
             sign_in_and_redirect @user
         else
-            flash[:error] = 'There was a problem signing you in through Facebook. Please register or try signing in later.'
-            redirect_to new_user_registration_url
+            omni_error(@user)
         end
     end
 
@@ -15,8 +20,7 @@ class OmniauthController < ApplicationController
         if @user.persisted?
             sign_in_and_redirect @user
         else
-            flash[:error] = 'There was a problem signing you in through Github. Please register or try signing in later.'
-            redirect_to new_user_registration_url
+            omni_error(@user)
         end
     end
 
@@ -25,8 +29,7 @@ class OmniauthController < ApplicationController
         if @user.persisted?
             sign_in_and_redirect @user
         else
-            flash[:error] = 'There was a problem signing you in through Google. Please register or try signing in later.'
-            redirect_to new_user_registration_url
+            omni_error(@user)
         end
     end
 
