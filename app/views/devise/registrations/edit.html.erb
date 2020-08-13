@@ -13,10 +13,6 @@
     <%= f.text_field :lname %>
   </div>
 
-  <div class="field">
-    <%= f.label :age %><br />
-    <%= f.number_field :age %>
-  </div>
   <% if current_user.uid.blank? %>
   <div class="field">
     <%= f.label :email %><br />
