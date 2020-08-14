@@ -11,7 +11,14 @@ class TasksController < ApplicationController
                 @med = @project.tasks.not_done.med
                 @high = @project.tasks.not_done.high
                 @done = @project.tasks.is_done
-            end
+            end    
+        elsif params[:search]
+            @parameters = params[:search].downcase
+            @tasks = current_user.tasks.where('lower(name) LIKE ?', "%#{@parameters}%")
+            @low = @tasks.not_done.low
+            @med = @tasks.not_done.med
+            @high = @tasks.not_done.high
+            @done = @tasks.is_done
         else
             @low = current_user.tasks.not_done.low
             @med = current_user.tasks.not_done.med
