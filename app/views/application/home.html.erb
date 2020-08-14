@@ -1,44 +1,62 @@
 <% if current_user %>
-    <h1>Welcome <%= current_user.fname %>!</h1>
-    -----------------------------------------------------------------
-    <h4>-------------------Tasks------------------</h4>
-    -----------------------------------------------------------------
-    <h4>Today</h4>
-    <% if @today.any? %>
-        <% @today.each do |t| %>
-            <li><%= link_to t.name, project_task_path(t.project,t) %></li>
-        <% end %>
-    <% else%>
-        <p>None Today! :)</p>
-    <% end %>
-
-    <h4>View By</h4>
-    <li><%= link_to "Context", circumstances_path %></li>
-    <li><%= link_to "Priority", tasks_path %></li>
-
-    -----------------------------------------------------------------
-    <h4>-----------------Projects------------------</h4>
-    -----------------------------------------------------------------
-    <h5>Area of Focus</h5>
-    <% if @focus.any? %>
-        <% @focus.each do |user_proj| %>
-            <li><%= link_to user_proj.project.title, user_proj.project %></li>
-        <% end %>
-    <% else %>
-        <p>Please mark a Project as an aof (Area of Focus) to be on your home view.</p>
-    <% end %>
-    <h5>Deadline Approaching</h5>
-    <% if @warning.any? %>
-        <% @warning.each do |p| %>
-            <li><%= link_to p.title, p %></li>
-        <% end %>
-    <% else %>
-        <p>No Project Deadlines Approaching</p>
-    <% end %>
-    <h5>View All</h5>
-    <li><%= link_to "View My Projects", projects_path %></li>
-    <br>
-    <%= button_to "Create Project", new_project_path, method: "get" %>
+    <div class="row">
+        <div class="col-4">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Today</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Weekly Tasks</a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Focus Projects</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Deadlined Projects</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                    <div class="list-group">
+                        <% if @today.any? %>
+                            <% @today.each do |t| %>
+                                <a class="list-group-item list-group-item-action list-group-item-light" <%= link_to t.name, project_task_path(t.project,t) %></a>
+                            <% end %>
+                        <% else%>
+                            <p>None Today! :)</p>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="list-group">
+                        <% if @focus.any? %>
+                            <% @focus.each do |user_proj| %>
+                                <a class="list-group-item list-group-item-action list-group-item-light" <%= link_to user_proj.project.title, user_proj.project %></a>
+                            <% end %>
+                        <% else %>
+                            <p>Please mark a Project as an aof (Area of Focus) to be on your home view.</p>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                    <div class="list-group">
+                        <% if @focus.any? %>
+                            <% @focus.each do |user_proj| %>
+                                <a class="list-group-item list-group-item-action list-group-item-light" <%= link_to user_proj.project.title, user_proj.project %></a>
+                            <% end %>
+                        <% else %>
+                            <p>Please mark a Project as an aof (Area of Focus) to be on your home view.</p>
+                        <% end %>
+                    </div>
+                </div>      
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                    <div class="list-group">
+                        <% if @warning.any? %>
+                            <% @warning.each do |p| %>
+                                <a class="list-group-item list-group-item-action list-group-item-light" <%= link_to p.title, p %></a>
+                            <% end %>
+                        <% else %>
+                            <p>No Project Deadlines Approaching</p>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <% else %>
     <h1>Done & Done</h1>
     <h4>Welcome, please <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %></h4>
