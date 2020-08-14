@@ -1,6 +1,5 @@
-<h1>Welcome to Projekt!</h1>
-<p>"Let our advance worrying become advance thinking and planning." - Winston Churchill.</p>
 <% if current_user %>
+    <h1>Welcome <%= current_user.fname %>!</h1>
     -----------------------------------------------------------------
     <h4>-------------------Tasks------------------</h4>
     -----------------------------------------------------------------
@@ -40,4 +39,7 @@
     <li><%= link_to "View My Projects", projects_path %></li>
     <br>
     <%= button_to "Create Project", new_project_path, method: "get" %>
+<% else %>
+    <h1>Done & Done</h1>
+    <h4>Welcome, please <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %></h4>
 <% end %>
