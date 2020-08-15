@@ -1,18 +1,26 @@
-<h2>My Projects</h2>
-<h3>In Progress</h3>
-<ul>
+<h6>Current Projects</h6>
+<div class="row row-cols-1 row-cols-md-2">
     <% if @incomplete_projects.any? %>
         <% @incomplete_projects.each do |p| %>
-            <li>Name: <%= p.title %></li>
-            <li>Objective: <%= p.objective %></li>
-            <li>Deadline: <%= format_date(p.deadline) %></li>
-            <li><%= link_to "View", p %></li><br>
+            <div class="col mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= p.title %></h5>
+                        <p class="card-text"><%= p.objective %></p>
+                        <small>Deadline: <%= format_date(p.deadline) %></small>
+                        <%= link_to "View", p %>
+                    </div>
+                </div>
+            </div>
         <% end %>
     <% else %>
-        <p>No Projects in Progress</p>
+        <p>No Current Projects</p>
     <% end %>
-</ul>
-<h3>Completed</h3>
+</div>
+
+<%= button_to "Create Project", new_project_path, method: "get" %><br>
+
+<h6>Completed</h6>
 <ul>
     <% if @complete_projects.any? %>
         <% @complete_projects.each do |p| %>
@@ -22,5 +30,3 @@
         <p>No Completed Projects</p>
     <% end %>
 </ul>
-
-<%= button_to "Create Project", new_project_path, method: "get" %><br>
