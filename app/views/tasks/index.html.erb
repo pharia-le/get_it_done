@@ -1,10 +1,24 @@
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <% if @project %>
+                <h1 class="display-5">Tasks - <%= @project.title %></h1>
+            <% else %>
+                <h1 class="display-5">Tasks</h1>
+            <% end %>
+            <p class="lead">View your tasks by levels of priority.</p>
+        </div>
+    </div>
 <div class="row">
     <div class="col-4">
         <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">High</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Medium</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Low</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Completed</a>
+            <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                High<span class="badge badge-primary badge-pill"><%= @high.length if @high.any? %></a>
+            <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+                Medium<span class="badge badge-primary badge-pill"><%= @med.length if @med.any? %></a>
+            <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">
+                Low<span class="badge badge-primary badge-pill"><%= @low.length if @low.any? %></a>
+            <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">
+                Completed</a>
         </div>
     </div>
     <div class="col-8">
