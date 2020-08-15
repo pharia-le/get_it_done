@@ -1,11 +1,19 @@
 <% if current_user %>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-5">Inbox</h1>
+            <p class="lead">View tasks by Today & Upcoming + Keep track of your Focus Projects.</p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-4">
             <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Today</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Weekly Tasks</a>
-                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Focus Projects</a>
-                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Deadlined Projects</a>
+                <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                    Today<span class="badge badge-primary badge-pill"><%= @today.length if @today.any? %></span></a>
+                <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+                    Upcoming<span class="badge badge-primary badge-pill"><%= @upcoming.length if @upcoming.any? %></span></a>
+                <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">
+                    Focus Projects<span class="badge badge-primary badge-pill"><%= @focus.length if @focus.any? %></span></a>
             </div>
         </div>
         <div class="col-8">
@@ -23,12 +31,12 @@
                 </div>
                 <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                     <div class="list-group">
-                        <% if @focus.any? %>
-                            <% @focus.each do |user_proj| %>
-                                <a class="list-group-item list-group-item-action list-group-item-light" <%= link_to user_proj.project.title, user_proj.project %></a>
+                        <% if @upcoming.any? %>
+                            <% @upcoming.each do |t| %>
+                                <a class="list-group-item list-group-item-action list-group-item-light" <%= link_to t.name, project_task_path(t.project,t) %></a>
                             <% end %>
                         <% else %>
-                            <p>Please mark a Project as an aof (Area of Focus) to be on your home view.</p>
+                            <p>No upcoming tasks this week.</p>
                         <% end %>
                     </div>
                 </div>
@@ -43,17 +51,6 @@
                         <% end %>
                     </div>
                 </div>      
-                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-                    <div class="list-group">
-                        <% if @warning.any? %>
-                            <% @warning.each do |p| %>
-                                <a class="list-group-item list-group-item-action list-group-item-light" <%= link_to p.title, p %></a>
-                            <% end %>
-                        <% else %>
-                            <p>No Project Deadlines Approaching</p>
-                        <% end %>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
