@@ -1,19 +1,23 @@
-<h2><%= @project.title %></h2>  
-<ul>
-    <li>Objective: <%= @project.objective %></li>
-    <li>Due by: <%= format_date(@project.deadline) %></li>
-    <li>Complete <%= @project.complete ? "Yes" : "No"  %></li>
-    <li>AoF: <%= @project.user_projects.first.aof ? "Yes" : "No" %></li><br>
+<div class="project-container">   
+    <h3><%= @project.title %></h3>  
+    <p><%= @project.objective %></p>
+    <small>Due: <%= format_date(@project.deadline) %></small>
     <%= button_to "Edit Project", edit_project_path(@project), method: "get" %>
     <%= button_to "Delete Project", @project, method: "delete" %>
-</ul>
+</div>
 
-<h3>Tasks in Progress</h3>
-<% @project.tasks.not_done.each do |t| %>
-    <li>Desc.: <%= t.name %></li>
-    <li>Priority: <%= t.priority %></li>
-    <li>Reminder: <%= format_date(t.reminder) %></li>
-    <li><%= link_to "View", project_task_path(@project,t) %></li><br>
-<% end %>
-<%= button_to "All Project Tasks", project_tasks_path(@project), method: "get" %><br>
-<%= button_to "Create New Task", new_project_task_path(@project), method: "get" %>
+<div class="tasks-in-progress-container">
+    <strong><h6>Current Tasks</h6></strong>
+    <div class="list-group">
+        <% @project.tasks.not_done.each do |t| %>
+        <a class="list-group-item list-group-item-action active"<%= link_to t.name, project_task_path(@project,t) %></a>
+            <div class="d-flex w-100 justify-content-between">
+                <small class="mb-1"><%= t.priority.downcase %> priority</small>
+                <small>Reminder: <%= format_date(t.reminder) %></small>
+            </div>
+        </a>
+        <% end %>
+    </div>
+    <small><%= link_to "All Project Tasks", project_tasks_path(@project), method: "get" %></small><br>
+    <%= button_to "Create New Task", new_project_task_path(@project), method: "get" %>
+</div>
