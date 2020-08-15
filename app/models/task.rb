@@ -10,6 +10,7 @@ class Task < ApplicationRecord
   scope :low, -> { where(priority: "Low") }
   scope :med, -> { where(priority: "Medium") }
   scope :high, -> { where(priority: "High") }
+  scope :upcoming, -> { where("reminder BETWEEN '#{DateTime.now.beginning_of_day + 1}' AND '#{DateTime.now.end_of_day + 8}'")  }
 
   def reminder_cannot_be_in_the_past
     if reminder.present? && reminder < Date.today
