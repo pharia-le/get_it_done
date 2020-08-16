@@ -2,7 +2,7 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-5">Inbox</h1>
-            <p class="lead">View tasks by Today & Upcoming + Keep track of your Focus Projects.</p>
+            <p class="lead">View your tasks by Today & Upcoming + Keep track of your Focus Projects.</p>
         </div>
     </div>
     <div class="row">
@@ -55,6 +55,5 @@
         </div>
     </div>
 <% else %>
-    <h1>Done & Done</h1>
-    <h4>Welcome, please <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %></h4>
+    <h4><%= link_to "sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %></h4>
 <% end %>
