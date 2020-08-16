@@ -1,8 +1,17 @@
-<h3><%= link_to @task.project.title, @task.project %></h3>
-<li>Desc: <%= @task.name %></li>
-<li>Priority: <%= @task.priority %></li>
-<li>Reminder: <%= format_date(@task.reminder) %></li>
-<li>Done: <%= @task.done %></li>
-<br>
-<%= button_to "Edit Task", edit_task_path(@task), method: "get" %><br>
-<%= button_to "Delete Task", @task, method: "delete" %>
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-5">Task View</h1>
+            <p class="lead">Project: <%= link_to @task.project.title, @task.project %></p>
+        </div>
+    </div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @task.name %></h5>
+    <p class="card-text">Priority: <%= @task.priority %></p>
+    <p class="card-text">Reminder: <%= format_date(@task.reminder) %></p>
+    <p class="card-text"><small class="text-muted">Done: <%= @task.done %></small></p>
+    <span class="badge badge-pill badge-secondary"><%= link_to "Edit", edit_task_path(@task), method: "get" %></span>
+    <span class="badge badge-pill badge-primary"><%= link_to "Delete", @task, method: "delete" %></span>
+  </div>
+</div>
