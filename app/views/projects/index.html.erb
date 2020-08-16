@@ -2,6 +2,7 @@
         <div class="container">
             <h1 class="display-5">Projects</h1>
             <p class="lead">View your current & completed projects.</p>
+            <span class="badge badge-pill badge-primary"> <%= link_to "Create Project", new_project_path, method: "get" %></span>
         </div>
     </div>
 <div class="row row-cols-1 row-cols-md-2">
@@ -22,9 +23,6 @@
         <p>No Current Projects</p>
     <% end %>
 </div>
-
-<%= button_to "Create Project", new_project_path, method: "get" %><br>
-
 <h6>Completed</h6>
 <ul>
     <% if @complete_projects.any? %>
