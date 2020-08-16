@@ -1,8 +1,14 @@
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-5">Context</h1>
+            <p class="lead">View your tasks by context / circumstance.</p>
+        </div>
+    </div>
 <% @circumstances.each do |c| %>
-    <h3><%= c.name %></h3>
+    <h5><%= c.name %></h5>
     <% c.tasks.not_done.each do |t| %>
         <% if t.project.users.first == current_user %>
-            <li><%= link_to t.name, t %></li>
+            <a class="list-group-item list-group-item-action" <%= link_to t.name, t %></a>
         <% end %>
     <% end %>
 <% end %>
