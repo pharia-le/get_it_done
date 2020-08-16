@@ -1,23 +1,23 @@
-<div class="project-container">   
-    <h3><%= @project.title %></h3>  
-    <p><%= @project.objective %></p>
-    <small>Due: <%= format_date(@project.deadline) %></small>
-    <%= button_to "Edit Project", edit_project_path(@project), method: "get" %>
-    <%= button_to "Delete Project", @project, method: "delete" %>
-</div>
-
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-5"><%= @project.title %></h1>
+            <p class="lead"><%= @project.objective %></p>
+            <small>Due: <%= format_date(@project.deadline) %></small>
+        </div>
+    </div>
 <div class="tasks-in-progress-container">
-    <strong><h6>Current Tasks</h6></strong>
     <div class="list-group">
         <% @project.tasks.not_done.each do |t| %>
-        <a class="list-group-item list-group-item-action active"<%= link_to t.name, project_task_path(@project,t) %></a>
+            <a class="list-group-item list-group-item-action" <%= link_to t.name, project_task_path(@project,t) %></a>
             <div class="d-flex w-100 justify-content-between">
                 <small class="mb-1"><%= t.priority.downcase %> priority</small>
+                <span class="badge badge-light"><%= link_to "Edit", edit_task_path(t), method: "get" %></span>
                 <small>Reminder: <%= format_date(t.reminder) %></small>
             </div>
         </a>
+        <br>
         <% end %>
     </div>
-    <small><%= link_to "All Project Tasks", project_tasks_path(@project), method: "get" %></small><br>
-    <%= button_to "Create New Task", new_project_task_path(@project), method: "get" %>
+    <span class="badge badge-pill badge-secondary"> <%= link_to "All Project Tasks", project_tasks_path(@project), method: "get" %></span>
+    <span class="badge badge-pill badge-primary"> <%= link_to "Create Task", new_project_task_path(@project), method: "get" %></span>
 </div>
