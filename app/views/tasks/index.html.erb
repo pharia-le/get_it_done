@@ -1,11 +1,10 @@
 <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <% if @project %>
-                <h1 class="display-5">Tasks - <%= @project.title %></h1>
-            <% else %>
-                <h1 class="display-5">Tasks</h1>
-            <% end %>
+            <h1 class="display-5">Priority</h1>
             <p class="lead">View your tasks by levels of priority.</p>
+            <% if @project %>       
+                <p>Project: <%= @project.title %></p>
+            <% end %>
         </div>
     </div>
 <div class="row">
