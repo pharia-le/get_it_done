@@ -66,6 +66,9 @@
 <% else %>
     <div class="centered">
         <h1>Done & Done</h1>
+        <br>
+        <%= image_tag "checklist_icon_done.png" %>
+        <br>
         <h4><%= link_to "sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %></h4>
     </div>
 <% end %>
