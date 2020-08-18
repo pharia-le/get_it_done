@@ -2,7 +2,8 @@
         <div class="container">
             <h1 class="display-5"><%= @project.title %></h1>
             <p class="lead"><%= @project.objective %></p>
-            <small>Due: <%= format_date(@project.deadline) %></small>
+            <h6><small>Due: <%= format_date(@project.deadline) %></small></h6>
+            <a class="badge badge-pill badge-primary" <%= link_to "Edit", edit_project_path(@project), method: "get" %></a>
         </div>
     </div>
 <div class="tasks-in-progress-container">
@@ -11,13 +12,13 @@
             <a class="list-group-item list-group-item-action" <%= link_to t.name, project_task_path(@project,t) %></a>
             <div class="d-flex w-100 justify-content-between">
                 <small class="mb-1"><%= t.priority.downcase %> priority</small>
-                <span class="badge badge-light"><%= link_to "Edit", edit_task_path(t), method: "get" %></span>
+                <a class="badge badge-pill badge-primary" <%= link_to "Edit", edit_task_path(t), method: "get" %></a>
                 <small>Reminder: <%= format_date(t.reminder) %></small>
             </div>
         </a>
         <br>
         <% end %>
     </div>
-    <span class="badge badge-pill badge-secondary"> <%= link_to "All Project Tasks", project_tasks_path(@project), method: "get" %></span>
-    <span class="badge badge-pill badge-primary"> <%= link_to "Create Task", new_project_task_path(@project), method: "get" %></span>
+    <a class="badge badge-pill badge-secondary" <%= link_to "All Project Tasks", project_tasks_path(@project), method: "get" %></a>
+    <a class="badge badge-pill badge-primary" <%= link_to "Create Task", new_project_task_path(@project), method: "get" %></a>
 </div>
