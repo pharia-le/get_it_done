@@ -2,7 +2,7 @@
         <div class="container">
             <h1 class="display-5">Projects</h1>
             <p class="lead">View your current & completed projects.</p>
-            <span class="badge badge-pill badge-primary"> <%= link_to "Create Project", new_project_path, method: "get" %></span>
+            <a class="badge badge-pill badge-primary" <%= link_to "Create Project", new_project_path, method: "get" %></a>
         </div>
     </div>
 <div class="row row-cols-1 row-cols-md-2">
@@ -20,7 +20,7 @@
             </div>
         <% end %>
     <% else %>
-        <p>No Current Projects</p>
+        <p><strong>No Current Projects</strong></p>
     <% end %>
 </div>
 <h6>Completed</h6>
@@ -30,6 +30,6 @@
             <li><%= link_to p.title, p %></li>
         <% end %>
     <% else %>
-        <p>No Completed Projects</p>
+        <p><strong>No Completed Projects</strong></p>
     <% end %>
 </ul>
