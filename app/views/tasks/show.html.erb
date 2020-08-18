@@ -11,7 +11,7 @@
     <p class="card-text">Priority: <%= @task.priority %></p>
     <p class="card-text">Reminder: <%= format_date(@task.reminder) %></p>
     <p class="card-text"><small class="text-muted">Done: <%= @task.done %></small></p>
-    <span class="badge badge-pill badge-secondary"><%= link_to "Edit", edit_task_path(@task), method: "get" %></span>
-    <span class="badge badge-pill badge-primary"><%= link_to "Delete", @task, method: "delete" %></span>
+    <a class="badge badge-pill badge-secondary"<%= link_to "Edit", edit_task_path(@task), method: "get" %></a>
+    <a class="badge badge-pill badge-primary"<%= link_to "Delete", @task, method: "delete" %></a>
   </div>
 </div>
