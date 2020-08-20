@@ -1,14 +1,16 @@
-# Projekt
+# Done & Done
 
-Projekt is a Ruby on Rails application where a user may manage their projects and associated tasks. Tasks are filtered by context so that a user may easily choose and complete a task based on the user's current context. This time management system is based on the popular Getting Things Done methodology created by author David Kelvin Allen.
+Done & Done is a Ruby on Rails application where a user may manage their projects and associated tasks. Tasks are filtered by context so that a user may easily choose and complete a task based on the user's current context. This time management system is based on the popular Getting Things Done methodology created by author David Kelvin Allen.
 
-### Installing
+## Installation
 
 Clone repository to chosen directory.
 
 ```
-git clone git@github.com:pharia-le/projekt.git
+git clone git@github.com:pharia-le/done_and_done.git
 ```
+
+## Usage
 
 Install gems.
 
@@ -16,7 +18,21 @@ Install gems.
 bundle install
 ```
 
-Create Postgres Database & Migrate database.
+Create Postgres database & migrate.
+
+```
+rails db:create
+```
+
+```
+rails db:migrate
+```
+
+Run seed data.
+
+```
+rails db:seed
+```
 
 
 Start rails server.
