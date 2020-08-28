@@ -7,23 +7,14 @@ class TasksController < ApplicationController
             if @project.nil?
                 redirect_to tasks_path, alert: "Project not found"
             else
-                @low = @project.tasks.not_done.low
-                @med = @project.tasks.not_done.med
-                @high = @project.tasks.not_done.high
-                @done = @project.tasks.is_done
+                set_tasks_by_priority(@project.tasks)
             end    
         elsif params[:search]
-            @parameters = params[:search].downcase
-            @tasks = current_user.tasks.where('lower(name) LIKE ?', "%#{@parameters}%")
-            @low = @tasks.not_done.low
-            @med = @tasks.not_done.med
-            @high = @tasks.not_done.high
-            @done = @tasks.is_done
+            parameters = params[:search].downcase
+            @tasks = current_user.tasks.where('lower(name) LIKE ?', "%#{parameters}%")
+            set_tasks_by_priority(@tasks)
         else
-            @low = current_user.tasks.not_done.low
-            @med = current_user.tasks.not_done.med
-            @high = current_user.tasks.not_done.high
-            @done = current_user.tasks.is_done
+            set_tasks_by_priority(current_user.tasks)
         end
     end
 
@@ -66,6 +57,13 @@ class TasksController < ApplicationController
 
     def set_task
         @task = Task.find_by_id(params[:id])
+    end
+
+    def set_tasks_by_priority(tasks)
+        @low = tasks.not_done.low
+        @med = tasks.not_done.med
+        @high = tasks.not_done.high
+        @done = tasks.is_done
     end
 
     def task_params
